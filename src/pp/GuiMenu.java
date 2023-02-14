@@ -11,6 +11,16 @@ public class GuiMenu extends JFrame implements ActionListener {
         this.setTitle(titolo);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);      // gestore chiusura finestra
         this.setLayout(null);
+        this.setResizable(false);
+
+        Container content = this.getContentPane();
+        content.setLayout(new GridLayout(1, 3));
+
+        content.add(new JButton("Button 1"));
+        content.add(new JButton("Button 2"));
+        content.add(new JButton("Button 3"));
+
+        this.pack();
     }
 
     public void actionPerformed(ActionEvent e)
