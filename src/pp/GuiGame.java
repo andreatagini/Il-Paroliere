@@ -1,7 +1,9 @@
 package pp;
 
 import javax.swing.*;
-import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Random;
 
 public class GuiGame extends JFrame{
     private JScrollPane scrollParole;
@@ -32,10 +34,206 @@ public class GuiGame extends JFrame{
     private JButton button23;
     private JButton button24;
     private JButton button25;
-    private JTextField textField1;
+    private JTextField textBox;
     private JButton button26;
+    private JButton button27;
+    private JButton button28;
+    private JButton button29;
+    private JButton button30;
+    private JButton button31;
+    private JButton button32;
+    private JButton button33;
+    private JButton button34;
+    private JButton button35;
+    private JButton button36;
+    private JButton button37;
+    private JButton button38;
+    private JButton button39;
+    private JButton button40;
+    private JButton button41;
+    private JButton button42;
+    private JButton button43;
+    private JButton button44;
+    private JButton button45;
+    private JButton button46;
+    private JButton button47;
+    private JButton button48;
+    private JButton button49;
+    private JButton button50;
+    private JButton button51;
+    private JButton button52;
+    private JButton button53;
+    private JButton button54;
+    private JButton button55;
+    private JButton button56;
+    private JButton button57;
+    private JButton button58;
+    private JButton button59;
+    private JButton button60;
+    private JButton button61;
+    private JButton button62;
+    private JButton button63;
+    private JButton button64;
+    private JButton button65;
+    private JButton button66;
+    private JButton button67;
+    private JButton button68;
+    private JButton button69;
+    private JButton button70;
+    private JButton button71;
+    private JButton button72;
+    private JButton button73;
+    private JButton button74;
+    private JButton button75;
+    private JButton button76;
+    private JButton button77;
+    private JButton button78;
+    private JButton button79;
+    private JButton button80;
+    private JButton button81;
+    private JButton button82;
+    private JButton button83;
+    private JButton button84;
+    private JButton button85;
+    private JButton button86;
+    private JButton button87;
+    private JButton button88;
+    private JButton button89;
+    private JButton button90;
+    private JButton button91;
+    private JButton button92;
+    private JButton button93;
+    private JButton button94;
+    private JButton button95;
+    private JButton button96;
+    private JButton button97;
+    private JButton button98;
+    private JButton button99;
+    private JButton button100;
+
+    private JButton[] bottoni = new JButton[100];
 
     public GuiGame() {
+        bottoni[0] = button1;
+        bottoni[1] = button2;
+        bottoni[2] = button3;
+        bottoni[3] = button4;
+        bottoni[4] = button5;
+        bottoni[5] = button6;
+        bottoni[6] = button7;
+        bottoni[7] = button8;
+        bottoni[8] = button9;
+        bottoni[9] = button10;
+        bottoni[10] = button11;
+        bottoni[11] = button12;
+        bottoni[12] = button13;
+        bottoni[13] = button14;
+        bottoni[14] = button15;
+        bottoni[15] = button16;
+        bottoni[16] = button17;
+        bottoni[17] = button18;
+        bottoni[18] = button19;
+        bottoni[19] = button20;
+        bottoni[20] = button21;
+        bottoni[21] = button22;
+        bottoni[22] = button23;
+        bottoni[23] = button24;
+        bottoni[24] = button25;
+        bottoni[25] = button26;
+        bottoni[26] = button27;
+        bottoni[27] = button28;
+        bottoni[28] = button29;
+        bottoni[29] = button30;
+        bottoni[30] = button31;
+        bottoni[31] = button32;
+        bottoni[32] = button33;
+        bottoni[33] = button34;
+        bottoni[34] = button35;
+        bottoni[35] = button36;
+        bottoni[36] = button37;
+        bottoni[37] = button38;
+        bottoni[38] = button39;
+        bottoni[39] = button40;
+        bottoni[40] = button41;
+        bottoni[41] = button42;
+        bottoni[42] = button43;
+        bottoni[43] = button44;
+        bottoni[44] = button45;
+        bottoni[45] = button46;
+        bottoni[46] = button47;
+        bottoni[47] = button48;
+        bottoni[48] = button49;
+        bottoni[49] = button50;
+        bottoni[50] = button51;
+        bottoni[51] = button52;
+        bottoni[52] = button53;
+        bottoni[53] = button54;
+        bottoni[54] = button55;
+        bottoni[55] = button56;
+        bottoni[56] = button57;
+        bottoni[57] = button58;
+        bottoni[58] = button59;
+        bottoni[59] = button60;
+        bottoni[60] = button61;
+        bottoni[61] = button62;
+        bottoni[62] = button63;
+        bottoni[63] = button64;
+        bottoni[64] = button65;
+        bottoni[65] = button66;
+        bottoni[66] = button67;
+        bottoni[67] = button68;
+        bottoni[68] = button69;
+        bottoni[69] = button70;
+        bottoni[70] = button71;
+        bottoni[71] = button72;
+        bottoni[72] = button73;
+        bottoni[73] = button74;
+        bottoni[74] = button75;
+        bottoni[75] = button76;
+        bottoni[76] = button77;
+        bottoni[77] = button78;
+        bottoni[78] = button79;
+        bottoni[79] = button80;
+        bottoni[80] = button81;
+        bottoni[81] = button82;
+        bottoni[82] = button83;
+        bottoni[83] = button84;
+        bottoni[84] = button85;
+        bottoni[85] = button86;
+        bottoni[86] = button87;
+        bottoni[87] = button88;
+        bottoni[88] = button89;
+        bottoni[89] = button90;
+        bottoni[90] = button91;
+        bottoni[91] = button92;
+        bottoni[92] = button93;
+        bottoni[93] = button94;
+        bottoni[94] = button95;
+        bottoni[95] = button96;
+        bottoni[96] = button97;
+        bottoni[97] = button98;
+        bottoni[98] = button99;
+        bottoni[99] = button100;
+
+        for(int i=0; i<bottoni.length; i++) {
+            bottoni[i].setText(getSTR());
+
+            bottoni[i].addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    JButton b = (JButton) e.getSource();
+                    System.out.println(b.getText());
+                }
+            });
+        }
+    }
+
+    private String getSTR() {
+        Random random = new Random();
+        char randomChar = (char) (random.nextInt(26) + 'a');
+        String lettera = new String(new char[] {randomChar});
+
+        return lettera;
     }
 
     public JPanel getPanel() {
