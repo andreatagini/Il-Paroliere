@@ -33,6 +33,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -45,6 +46,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -57,6 +59,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -69,6 +72,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -81,6 +85,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -93,6 +98,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -105,6 +111,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -117,6 +124,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -129,6 +137,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -141,6 +150,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -153,6 +163,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -165,6 +176,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -177,6 +189,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -189,6 +202,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -201,6 +215,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -213,6 +228,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -225,6 +241,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -237,6 +254,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -249,6 +267,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -261,6 +280,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -273,6 +293,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -285,6 +306,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -297,6 +319,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -309,6 +332,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -321,6 +345,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -333,6 +358,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -345,6 +371,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -357,6 +384,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -369,6 +397,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -381,6 +410,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -393,6 +423,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -405,6 +436,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -417,6 +449,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -429,6 +462,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -441,6 +475,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -453,6 +488,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -465,6 +501,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -477,6 +514,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -489,6 +527,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -501,6 +540,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -513,6 +553,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -525,6 +566,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -537,6 +579,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -549,6 +592,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -561,6 +605,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -573,6 +618,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -585,6 +631,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -597,6 +644,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -609,6 +657,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -621,6 +670,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -633,6 +683,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -645,6 +696,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -657,6 +709,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -669,6 +722,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -681,6 +735,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -693,6 +748,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -705,6 +761,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -717,6 +774,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -729,6 +787,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -741,6 +800,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -753,6 +813,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -765,6 +826,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -777,6 +839,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -789,6 +852,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -801,6 +865,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -813,6 +878,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -825,6 +891,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -837,6 +904,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -849,6 +917,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -861,6 +930,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -873,6 +943,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -885,6 +956,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -897,6 +969,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -909,6 +982,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -921,6 +995,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -933,6 +1008,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -945,6 +1021,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -957,6 +1034,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -969,6 +1047,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -981,6 +1060,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -993,6 +1073,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -1005,6 +1086,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -1017,6 +1099,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -1029,6 +1112,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -1041,6 +1125,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -1053,6 +1138,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -1065,6 +1151,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -1077,6 +1164,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -1089,6 +1177,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -1101,6 +1190,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -1113,6 +1203,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -1125,6 +1216,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -1137,6 +1229,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -1149,6 +1242,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -1161,6 +1255,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -1173,6 +1268,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -1185,6 +1281,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -1197,6 +1294,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -1209,6 +1307,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -1221,6 +1320,7 @@
               </grid>
             </constraints>
             <properties>
+              <enabled value="true"/>
               <text value="Button"/>
             </properties>
           </component>
@@ -1229,7 +1329,7 @@
       <component id="5754d" class="javax.swing.JTextField" binding="textBox">
         <constraints>
           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="-1"/>
+            <preferred-size width="150" height="10"/>
           </grid>
         </constraints>
         <properties/>

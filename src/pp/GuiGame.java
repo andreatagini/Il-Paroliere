@@ -1,6 +1,8 @@
 package pp;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Random;
 
 public class GuiGame extends JFrame{
@@ -233,7 +235,16 @@ public class GuiGame extends JFrame{
             });*/
         }
 
-
+        //alla pressione del tasto buttonSend prelevo la frase
+        JTextArea textArea = new JTextArea();
+        buttonSend.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                parola[0] = textBox.getText();
+                textArea.append(parola[0]);
+                scrollParole.add(textArea);
+            }
+        });
     }
 
     private String getSTR() {
