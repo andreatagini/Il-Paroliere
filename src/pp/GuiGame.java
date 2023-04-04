@@ -1,8 +1,6 @@
 package pp;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Random;
 
 public class GuiGame extends JFrame{
@@ -110,6 +108,7 @@ public class GuiGame extends JFrame{
     private JButton button98;
     private JButton button99;
     private JButton button100;
+    private JButton buttonSend;
 
     private JButton[] bottoni = new JButton[100];
 
@@ -215,17 +214,26 @@ public class GuiGame extends JFrame{
         bottoni[98] = button99;
         bottoni[99] = button100;
 
+        //stringa che va messa nella text box
+        final String[] parola = {new String()};
+
         for(int i=0; i<bottoni.length; i++) {
             bottoni[i].setText(getSTR());
 
-            bottoni[i].addActionListener(new ActionListener() {
+            //alla pressione di un bottone preleva il testo del bottone
+            //lo mette dentro una stringa
+            /*bottoni[i].addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     JButton b = (JButton) e.getSource();
+                    parola[0] = parola[0] + b.getText();
+                    textBox.setText(parola[0]);
                     System.out.println(b.getText());
                 }
-            });
+            });*/
         }
+
+
     }
 
     private String getSTR() {

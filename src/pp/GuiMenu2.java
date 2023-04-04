@@ -23,7 +23,7 @@ public class GuiMenu2 extends JFrame{
         GuiGame schermataGioco = new GuiGame();
         schermataGioco.setContentPane(schermataGioco.getPanel());
         schermataGioco.setTitle("Il Paroliere - Gioca!");
-        schermataGioco.setSize(1000,500);
+        schermataGioco.setSize(1000,800);
         schermataGioco.setVisible(true);
         schermataGioco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
