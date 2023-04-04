@@ -1,31 +1,28 @@
 package pp;
+import model.*;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.Graphics;
 import javax.swing.event.*;
 import java.awt.event.*;
-public class GuiMenu extends JFrame implements ActionListener {
 
-    public GuiMenu(String titolo) {
-        this.setSize(1000,600);
-        this.setTitle(titolo);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);      // gestore chiusura finestra
-        this.setLayout(null);
-        this.setResizable(false);
+public class GuiMenu extends JFrame {
+    public GuiMenu() {
+        super("Esempio di JFrame con bottoni");
 
-        Container content = this.getContentPane();
-        content.setLayout(new GridLayout(1, 3));
+        JPanel panel = new JPanel();
 
-        content.add(new JButton("Button 1"));
-        content.add(new JButton("Button 2"));
-        content.add(new JButton("Button 3"));
+        JButton button1 = new JButton("Bottone 1");
+        JButton button2 = new JButton("Bottone 2");
 
+        panel.add(button1);
+        panel.add(button2);
+
+        button1.addActionListener(new MyActionListener());
+        button2.addActionListener(new MyActionListener());
+
+        this.add(panel);
         this.pack();
+        this.setVisible(true);
     }
-
-    public void actionPerformed(ActionEvent e)
-    {
-
-    }
-
 }
