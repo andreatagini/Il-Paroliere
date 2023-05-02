@@ -22,6 +22,6 @@ public class Main {
         } else {
             System.out.println("Parola non trovata");
         }
-        //menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }
