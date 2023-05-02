@@ -114,6 +114,8 @@ public class GuiGame extends JFrame{
     private JButton[] bottoni = new JButton[100];
 
     private String parola;
+    private int lastClick;
+    private int clicked;
 
     public GuiGame() {
         bottoni[0] = button1;
@@ -218,6 +220,7 @@ public class GuiGame extends JFrame{
         bottoni[99] = button100;
 
         parola = "";
+        lastClick = -1;
 
         for(int i=0; i<bottoni.length; i++) {
             bottoni[i].setText(getSTR());
@@ -226,6 +229,19 @@ public class GuiGame extends JFrame{
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     JButton b = (JButton) e.getSource();
+                    String n = b.getName();
+                    String nButton;
+
+                    //prendo il nome del bottone, e prendo il numero del bottone
+                    //che corrisponde alla posizione nel vettore +1; 10 vettore == button11
+
+                    if(true) {
+                        nButton = String.valueOf(n.charAt(6));
+                    }
+
+                    if(lastClick != -1) {
+
+                    }
                     parola = parola + b.getText();
                     textBox.setText(parola);
                     System.out.println(b.getText());
