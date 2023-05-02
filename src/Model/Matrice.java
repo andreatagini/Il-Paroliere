@@ -43,10 +43,6 @@ public class Matrice implements ActionListener {
                 this.matrice[i][j] = alphabet.charAt(r.nextInt(alphabet.length()));
             }
         }
-        this.matrice[0][0] = 'c';
-        this.matrice[0][1] = 'i';
-        this.matrice[0][2] = 'a';
-        this.matrice[0][3] = 'o';
     }
     public void visualMatrice() {
         for(int i = 0; i < matrice.length; i++) {
