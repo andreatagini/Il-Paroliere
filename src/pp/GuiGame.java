@@ -113,6 +113,8 @@ public class GuiGame extends JFrame{
 
     private JButton[] bottoni = new JButton[100];
 
+    private String parola;
+
     public GuiGame() {
         bottoni[0] = button1;
         bottoni[1] = button2;
@@ -215,6 +217,8 @@ public class GuiGame extends JFrame{
         bottoni[98] = button99;
         bottoni[99] = button100;
 
+        parola = "";
+
         for(int i=0; i<bottoni.length; i++) {
             bottoni[i].setText(getSTR());
 
@@ -222,6 +226,8 @@ public class GuiGame extends JFrame{
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     JButton b = (JButton) e.getSource();
+                    parola = parola + b.getText();
+                    textBox.setText(parola);
                     System.out.println(b.getText());
                 }
             });
