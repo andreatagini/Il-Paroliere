@@ -4,8 +4,11 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
+import model.Matrice;
 
 public class GuiGame extends JFrame{
+
+    private Matrice metodiMatrice;
     private JScrollPane scrollParole;
     private JPanel panelMain;
     private JPanel panelGrid;
@@ -117,6 +120,8 @@ public class GuiGame extends JFrame{
     private int lastClick;
     private int clicked;
 
+    public int i = 0;
+
     public GuiGame() {
         bottoni[0] = button1;
         bottoni[1] = button2;
@@ -219,29 +224,56 @@ public class GuiGame extends JFrame{
         bottoni[98] = button99;
         bottoni[99] = button100;
 
+        metodiMatrice = new Matrice();
         parola = "";
         lastClick = -1;
 
-        for(int i=0; i<bottoni.length; i++) {
-            bottoni[i].setText(getSTR());
+        metodiMatrice.caricaMatrice();
+        char[][] matrice = metodiMatrice.getMatrice();
+        metodiMatrice.visualMatrice();
+
+        //converto da matrice ad array di char
+        // Calcola la dimensione dell'array risultante
+        int righe = matrice.length;
+        int colonne = matrice[0].length;
+        int dimensioneArray = righe * colonne;
+
+        // Crea un nuovo array di char
+        char[] array = new char[dimensioneArray];
+
+        // Copia gli elementi della matrice nell'array
+        int indice = 0;
+        for (int i = 0; i < righe; i++) {
+            for (int j = 0; j < colonne; j++) {
+                array[indice] = matrice[i][j];
+                indice++;
+            }
+        }
+
+        for(i=0; i<bottoni.length; i++) {
+            bottoni[i].setText(Character.toString(array[i]));
 
             bottoni[i].addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     JButton b = (JButton) e.getSource();
                     String n = b.getName();
-                    String nButton;
+                    System.out.println(n);
+                    String nButton = "";
+
 
                     //prendo il nome del bottone, e prendo il numero del bottone
                     //che corrisponde alla posizione nel vettore +1; 10 vettore == button11
 
-                    if(true) {
+                    /*if(n.length() == 7) {
                         nButton = String.valueOf(n.charAt(6));
+                    } else if (n.length() == 8) {
+
                     }
 
                     if(lastClick != -1) {
 
-                    }
+                    }*/
                     parola = parola + b.getText();
                     textBox.setText(parola);
                     System.out.println(b.getText());
