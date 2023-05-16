@@ -342,7 +342,33 @@ public class GuiGame extends JFrame{
 
                             //controllo riga orizzontale in basso
                         } else if (posButton > 90 && posButton < 99) {
+                            //controllo il click precedente se è limitrofo
+                            if(lastClick == posButton-1 || lastClick == posButton+1 || lastClick == posButton-10 || lastClick == posButton-9 || lastClick == posButton-11) {
+                                parola = parola + b.getText();
+                            } else {
+                                parola = "";
+                                parola = parola +b.getText();
+                                abilitaButton();
+                            }
 
+                            lastClick = posButton;
+                            //disabilito il bottone
+                            bottoni[posButton].setEnabled(false);
+
+                            //controllo riga verticale sinistra - sono tutti divisibili per 10
+                        } else if (posButton % 10 == 0) {
+                            //controllo il click precedente se è limitrofo
+                            if(lastClick == posButton+1 || lastClick == posButton-10 || lastClick == posButton+10 || lastClick == posButton-9 || lastClick == posButton+11) {
+                                parola = parola + b.getText();
+                            } else {
+                                parola = "";
+                                parola = parola +b.getText();
+                                abilitaButton();
+                            }
+
+                            lastClick = posButton;
+                            //disabilito il bottone
+                            bottoni[posButton].setEnabled(false);
                         }
 
                     }
