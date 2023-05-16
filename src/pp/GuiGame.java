@@ -120,8 +120,6 @@ public class GuiGame extends JFrame{
     private int lastClick;
     private int clicked;
 
-    public int i = 0;
-
     public GuiGame() {
         bottoni[0] = button1;
         bottoni[1] = button2;
@@ -250,31 +248,102 @@ public class GuiGame extends JFrame{
             }
         }
 
-        for(i=0; i<bottoni.length; i++) {
+        for(int i=0; i<bottoni.length; i++) {
             bottoni[i].setText(Character.toString(array[i]));
+            bottoni[i].setName(""+i);
 
             bottoni[i].addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     JButton b = (JButton) e.getSource();
-                    String n = b.getName();
-                    System.out.println(n);
-                    String nButton = "";
+                    int posButton = Integer.parseInt(b.getName());
 
+                    //controllo l'ultimo click
+                    //se l'ultimo click è a -1, vuol dire che è il primo click
+                    //quindi inserisco la parola
+                    if(lastClick == -1) {
+                        lastClick = posButton;
+                        parola = "";
+                        parola = parola + b.getText();
+                        bottoni[posButton].setEnabled(false);
+                    } else {
+                        //controllo se il bottone si trova nell'angolo in alto a sinistra
+                        if(posButton == 0) {
+                            //controllo il click precedente, se non è limitrofo elimino la parola
+                            if(lastClick == posButton+1 || lastClick == posButton+10 || lastClick == posButton+11) {
+                                parola = parola + b.getText();
+                            } else {
+                                parola = "";
+                                parola = parola +b.getText();
+                                abilitaButton();
+                            }
 
-                    //prendo il nome del bottone, e prendo il numero del bottone
-                    //che corrisponde alla posizione nel vettore +1; 10 vettore == button11
+                            lastClick = posButton;
+                            //disabilito il bottone
+                            bottoni[posButton].setEnabled(false);
 
-                    /*if(n.length() == 7) {
-                        nButton = String.valueOf(n.charAt(6));
-                    } else if (n.length() == 8) {
+                            //controllo angolo alto a destra
+                        } else if(posButton == 9) {
+                            //controllo il click precedente se è limitrofo
+                            if(lastClick == posButton-1 || lastClick == posButton+9 || lastClick == posButton+10) {
+                                parola = parola + b.getText();
+                            } else {
+                                parola = "";
+                                parola = parola +b.getText();
+                                abilitaButton();
+                            }
+
+                            lastClick = posButton;
+                            //disabilito il bottone
+                            bottoni[posButton].setEnabled(false);
+
+                            //controllo angolo basso sinistra
+                        } else if (posButton == 90) {
+                            //controllo il click precedente se è limitrofo
+                            if(lastClick == posButton+1 || lastClick == posButton-9 || lastClick == posButton-10) {
+                                parola = parola + b.getText();
+                            } else {
+                                parola = "";
+                                parola = parola +b.getText();
+                                abilitaButton();
+                            }
+
+                            lastClick = posButton;
+                            //disabilito il bottone
+                            bottoni[posButton].setEnabled(false);
+                        } else if (posButton == 99) {
+                            //controllo il click precedente se è limitrofo
+                            if(lastClick == posButton-1 || lastClick == posButton-10 || lastClick == posButton-11) {
+                                parola = parola + b.getText();
+                            } else {
+                                parola = "";
+                                parola = parola +b.getText();
+                                abilitaButton();
+                            }
+
+                            lastClick = posButton;
+                            //disabilito il bottone
+                            bottoni[posButton].setEnabled(false);
+
+                            //controllo riga orizzontale in alto
+                        } else if (posButton > 0 || posButton < 9) {
+                            //controllo il click precedente se è limitrofo
+                            if(lastClick == posButton+1 || lastClick == posButton-1 || lastClick == posButton+10 || lastClick == posButton+9 || lastClick == posButton+11) {
+                                parola = parola + b.getText();
+                            } else {
+                                parola = "";
+                                parola = parola +b.getText();
+                                abilitaButton();
+                            }
+
+                            lastClick = posButton;
+                            //disabilito il bottone
+                            bottoni[posButton].setEnabled(false);
+                        }
 
                     }
 
-                    if(lastClick != -1) {
-
-                    }*/
-                    parola = parola + b.getText();
+                    //parola = parola + b.getText();
                     textBox.setText(parola);
                     System.out.println(b.getText());
                 }
@@ -288,6 +357,17 @@ public class GuiGame extends JFrame{
         String lettera = new String(new char[] {randomChar});
 
         return lettera;
+    }
+
+    //abilita tutti i bottoni
+    private void abilitaButton () {
+        for(int i=0; i<bottoni.length; i++) {
+            bottoni[i].setEnabled(true);
+        }
+    }
+
+    public String getParola() {
+        return parola;
     }
 
     public JPanel getPanel() {
