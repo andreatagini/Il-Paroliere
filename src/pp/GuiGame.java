@@ -326,7 +326,7 @@ public class GuiGame extends JFrame{
                             bottoni[posButton].setEnabled(false);
 
                             //controllo riga orizzontale in alto
-                        } else if (posButton > 0 || posButton < 9) {
+                        } else if (posButton > 0 && posButton < 9) {
                             //controllo il click precedente se è limitrofo
                             if(lastClick == posButton+1 || lastClick == posButton-1 || lastClick == posButton+10 || lastClick == posButton+9 || lastClick == posButton+11) {
                                 parola = parola + b.getText();
@@ -339,6 +339,10 @@ public class GuiGame extends JFrame{
                             lastClick = posButton;
                             //disabilito il bottone
                             bottoni[posButton].setEnabled(false);
+
+                            //controllo riga orizzontale in basso
+                        } else if (posButton > 90 && posButton < 99) {
+
                         }
 
                     }
