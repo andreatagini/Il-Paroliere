@@ -113,6 +113,8 @@ public class GuiGame extends JFrame{
     private JButton button98;
     private JButton button99;
     private JButton button100;
+    private JButton btnSend;
+    private JButton btnStop;
 
     private JButton[] bottoni = new JButton[100];
 
@@ -248,6 +250,14 @@ public class GuiGame extends JFrame{
             }
         }
 
+        //controlla se la parola inserita esiste
+        btnSend.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
         for(int i=0; i<bottoni.length; i++) {
             bottoni[i].setText(Character.toString(array[i]));
             bottoni[i].setName(""+i);
@@ -359,6 +369,36 @@ public class GuiGame extends JFrame{
                         } else if (posButton % 10 == 0) {
                             //controllo il click precedente se è limitrofo
                             if(lastClick == posButton+1 || lastClick == posButton-10 || lastClick == posButton+10 || lastClick == posButton-9 || lastClick == posButton+11) {
+                                parola = parola + b.getText();
+                            } else {
+                                parola = "";
+                                parola = parola +b.getText();
+                                abilitaButton();
+                            }
+
+                            lastClick = posButton;
+                            //disabilito il bottone
+                            bottoni[posButton].setEnabled(false);
+
+                            //riga verticale destra - il numero - 9 da un numero divisibile per 10
+                        } else if ((posButton-9) % 10 == 0) {
+                            //controllo il click precedente se è limitrofo
+                            if(lastClick == posButton-1 || lastClick == posButton-10 || lastClick == posButton+10 || lastClick == posButton-11 || lastClick == posButton+9) {
+                                parola = parola + b.getText();
+                            } else {
+                                parola = "";
+                                parola = parola +b.getText();
+                                abilitaButton();
+                            }
+
+                            lastClick = posButton;
+                            //disabilito il bottone
+                            bottoni[posButton].setEnabled(false);
+
+                            //se è un tasto in mezzo alla griglia
+                        } else {
+                            //controllo il click precedente se è limitrofo
+                            if(lastClick == posButton+1 || lastClick == posButton-1 || lastClick == posButton+10 || lastClick == posButton-10 || lastClick == posButton+11 || lastClick == posButton+9 || lastClick == posButton-11 || lastClick == posButton-9) {
                                 parola = parola + b.getText();
                             } else {
                                 parola = "";
