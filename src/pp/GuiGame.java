@@ -254,7 +254,10 @@ public class GuiGame extends JFrame{
         btnSend.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                boolean parolaTrovata = metodiMatrice.ricercaParolaInMatriceTastiera(parola);
+                System.out.println("parola inserita: "+parola);
+                System.out.println("esito: "+parolaTrovata);
+                System.out.println("");
             }
         });
 

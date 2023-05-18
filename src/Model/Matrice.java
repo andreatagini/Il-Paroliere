@@ -59,48 +59,113 @@ public class Matrice implements ActionListener {
                 this.matrice[i][j] = alphabet.charAt(r.nextInt(alphabet.length()));
             }
         }
-        for (int j = 0; j < 7; j++) {
+        matrice[0][0] = 'c';
+        matrice[0][1] = 'i';
+        matrice[0][2] = 'a';
+        matrice[0][3] = 'o';
+        /*for (int j = 0; j < 7; j++) {
             //prendo string casuale dall'array parole comuni
             Random r1 = new Random();
             int nCas1 = r1.nextInt(getParoleComuni().size());
             String comune = getParoleComuni().get(nCas1);
+            System.out.println(comune);
             //numeri random per la posizione della matrice
             Random rx = new Random();
             int nCasX = rx.nextInt(10);//numero compreso tra 0 e 9
             Random ry = new Random();
             int nCasY = ry.nextInt(10);
             //numero random per la direzione in cui verra inserita
-            Random r2 = new Random();
-            int nCas2 = r2.nextInt(8) + 1;//numero compreso tra 1 e 8
+            int nCas2 = isDentroRange(nCasX, nCasY, comune);
             //inserimento di parole comuni nella matrice
-            matrice[nCasX][nCasY] = comune.charAt(0);
+            matrice[nCasY][nCasX] = comune.charAt(0);
             for (int i = 1; i < comune.length(); i++) {
                 if (nCas2 == 1) {
-                    matrice[nCasX+i][nCasY] = comune.charAt(i);
+                    matrice[nCasY][nCasX+i] = comune.charAt(i);
                 }
                 if (nCas2 == 2) {
-                    matrice[nCasX+i][nCasY+i] = comune.charAt(i);
+                    matrice[nCasY+i][nCasX+i] = comune.charAt(i);
                 }
                 if (nCas2 == 3) {
-                    matrice[nCasX][nCasY+i] = comune.charAt(i);
+                    matrice[nCasY+i][nCasX] = comune.charAt(i);
                 }
                 if (nCas2 == 4) {
-                    matrice[nCasX-i][nCasY+i] = comune.charAt(i);
+                    matrice[nCasY+i][nCasX-i] = comune.charAt(i);
                 }
                 if (nCas2 == 5) {
-                    matrice[nCasX-i][nCasY] = comune.charAt(i);
+                    matrice[nCasY][nCasX-i] = comune.charAt(i);
                 }
                 if (nCas2 == 6) {
-                    matrice[nCasX-i][nCasY-i] = comune.charAt(i);
+                    matrice[nCasY-i][nCasX-i] = comune.charAt(i);
                 }
                 if (nCas2 == 7) {
-                    matrice[nCasX][nCasY-i] = comune.charAt(i);
+                    matrice[nCasY-i][nCasX] = comune.charAt(i);
                 }
                 if (nCas2 == 8) {
-                    matrice[nCasX+i][nCasY-i] = comune.charAt(i);
+                    matrice[nCasY-i][nCasX+i] = comune.charAt(i);
                 }
             }
-        }
+        }*/
+    }
+    public int isDentroRange(int nCasX, int nCasY, String comune) {
+        boolean inRange = false;
+        int nCas2;
+        do {
+            //numero random per la direzione in cui verra inserita
+            Random r2 = new Random();
+            nCas2 = r2.nextInt(8) + 1;//numero compreso tra 1 e 8
+            System.out.print(nCas2);
+            System.out.println("x: "+nCasX);
+            System.out.println("y: "+nCasY);
+            if (nCas2 == 1) {
+                if (nCasX + comune.length() < matrice[0].length) {
+                    inRange = true;
+                }
+            }
+            if (nCas2 == 2) {
+                if (nCasX + comune.length() < matrice[0].length) {
+                    if (nCasY + comune.length() < matrice.length) {
+                        inRange = true;
+                    }
+                }
+            }
+            if (nCas2 == 3) {
+                if (nCasY + comune.length() < matrice.length) {
+                    inRange = true;
+                }
+            }
+            if (nCas2 == 4) {
+                if (nCasX + comune.length() < matrice[0].length) {
+                    if (nCasY + comune.length() < matrice.length) {
+                        inRange = true;
+                    }
+                }
+            }
+            if (nCas2 == 5) {
+                if (nCasX + comune.length() < matrice[0].length) {
+                    inRange = true;
+                }
+            }
+            if (nCas2 == 6) {
+                if (nCasX + comune.length() < matrice[0].length) {
+                    if (nCasY + comune.length() < matrice.length) {
+                        inRange = true;
+                    }
+                }
+            }
+            if (nCas2 == 7) {
+                if (nCasY + comune.length() < matrice.length) {
+                    inRange = true;
+                }
+            }
+            if (nCas2 == 8) {
+                if (nCasX + comune.length() < matrice[0].length) {
+                    if (nCasY + comune.length() < matrice.length) {
+                        inRange = true;
+                    }
+                }
+            }
+        } while (inRange == false);
+        return nCas2;
     }
     public void visualMatrice() {
         for(int i = 0; i < matrice.length; i++) {
@@ -128,8 +193,6 @@ public class Matrice implements ActionListener {
             words.add(word);
         }
 
-        System.out.println(paroleComuni.get(1));
-
         scanner.close();
     }
 
@@ -156,6 +219,7 @@ public class Matrice implements ActionListener {
                 return true;
             }
         }
+        System.out.println(parola);
         return false;
     }
     public static boolean cercaParola(char[][] matrice, String parola) {
@@ -215,10 +279,12 @@ public class Matrice implements ActionListener {
         String inputString = scanner.nextLine();
         System.out.println("Hai inserito: " + inputString);*/
 
-        boolean esiste = ricercaParolaInDizionario(parola);
+        /*boolean esiste = ricercaParolaInDizionario(parola);
         if (esiste == false) {
             return false;
         }
+
+        System.out.println(parola);*/
 
         int wordLength = parola.length();
 
