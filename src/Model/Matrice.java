@@ -60,9 +60,9 @@ public class Matrice implements ActionListener {
             }
         }
         matrice[0][0] = 'c';
-        matrice[0][0] = 'i';
-        matrice[0][0] = 'a';
-        matrice[0][0] = 'o';
+        matrice[0][1] = 'i';
+        matrice[0][2] = 'a';
+        matrice[0][3] = 'o';
         /*for (int j = 0; j < 7; j++) {
             //prendo string casuale dall'array parole comuni
             Random r1 = new Random();
