@@ -3,6 +3,7 @@ package pp;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.Random;
 import model.Matrice;
 
@@ -254,7 +255,12 @@ public class GuiGame extends JFrame{
         btnSend.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                boolean parolaTrovata = metodiMatrice.ricercaParolaInMatriceTastiera(parola);
+                boolean parolaTrovata = false;
+                try {
+                    parolaTrovata = metodiMatrice.ricercaParolaInMatriceTastiera(parola);
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
                 System.out.println("parola inserita: "+parola);
                 System.out.println("esito: "+parolaTrovata);
                 System.out.println("");

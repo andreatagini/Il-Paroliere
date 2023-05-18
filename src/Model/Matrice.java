@@ -1,9 +1,13 @@
 package model;
 
+import db.DBconnection;
+import db.DBquery;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -16,6 +20,7 @@ public class Matrice implements ActionListener {
     private ArrayList<String> words;
     private ArrayList<String> paroleRipetute;
     private ArrayList<String> paroleComuni;
+    DBquery connect = null;
 
     //costruttore
     public Matrice() {
@@ -23,6 +28,7 @@ public class Matrice implements ActionListener {
         words = new ArrayList<>();
         paroleRipetute = new ArrayList<>();
         paroleComuni = new ArrayList<>();
+        connect = new DBquery();
     }
 
     //getter and setter
@@ -213,14 +219,9 @@ public class Matrice implements ActionListener {
     public static boolean isIndexOutOfRange(int index, int arrayLength) {
         return index < 0 || index >= arrayLength;
     }
-    public boolean ricercaParolaInDizionario(String parola) {
-        for (int x = 0; x < words.size(); x++) {
-            if (words.get(x).equals(parola)) {
-                return true;
-            }
-        }
-        System.out.println(parola);
-        return false;
+    public boolean ricercaParolaInDizionario(String parola) throws SQLException {
+        boolean trovato = connect.getParolaDb(parola);
+        return trovato;
     }
     public static boolean cercaParola(char[][] matrice, String parola) {
         int m = matrice.length;
@@ -270,7 +271,7 @@ public class Matrice implements ActionListener {
         }
         return ripetuto;
     }
-    public boolean ricercaParolaInMatriceTastiera(String parola) {
+    public boolean ricercaParolaInMatriceTastiera(String parola) throws SQLException {
         int numRows = matrice.length;
         int numCols = matrice[0].length;
 
@@ -279,12 +280,12 @@ public class Matrice implements ActionListener {
         String inputString = scanner.nextLine();
         System.out.println("Hai inserito: " + inputString);*/
 
-        /*boolean esiste = ricercaParolaInDizionario(parola);
+        boolean esiste = ricercaParolaInDizionario(parola);
         if (esiste == false) {
             return false;
         }
 
-        System.out.println(parola);*/
+        System.out.println(parola);
 
         int wordLength = parola.length();
 
