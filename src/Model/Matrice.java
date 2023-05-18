@@ -59,7 +59,7 @@ public class Matrice implements ActionListener {
                 this.matrice[i][j] = alphabet.charAt(r.nextInt(alphabet.length()));
             }
         }
-        for (int j = 0; j < 7; j++) {
+        /*for (int j = 0; j < 7; j++) {
             //prendo string casuale dall'array parole comuni
             Random r1 = new Random();
             int nCas1 = r1.nextInt(getParoleComuni().size());
@@ -73,7 +73,7 @@ public class Matrice implements ActionListener {
             int nCas2 = isDentroRange(nCasX, nCasY, comune);
             //inserimento di parole comuni nella matrice
             matrice[nCasY][nCasX] = comune.charAt(0);
-            /*for (int i = 1; i < comune.length(); i++) {
+            for (int i = 1; i < comune.length(); i++) {
                 if (nCas2 == 1) {
                     matrice[nCasY][nCasX+i] = comune.charAt(i);
                 }
@@ -98,8 +98,8 @@ public class Matrice implements ActionListener {
                 if (nCas2 == 8) {
                     matrice[nCasY-i][nCasX+i] = comune.charAt(i);
                 }
-            }*/
-        }
+            }
+        }*/
     }
     public int isDentroRange(int nCasX, int nCasY, String comune) {
         boolean inRange = false;
