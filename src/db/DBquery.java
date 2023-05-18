@@ -1,5 +1,6 @@
 package db;
-
+import java.util.*;
+import java.sql.*;
 public class DBquery {
 
     public boolean getInsert(String nomeGiocatore, int punteggio) {
@@ -10,8 +11,16 @@ public class DBquery {
         return success;
     }
 
+    public ResultSet getSelect() {
+        DBconnection connessione1 = new DBconnection();
+        String query = "SELECT nomeGiocatore, punteggio FROM partita;";
+        ResultSet anagrafica = connessione1.querySelect(query);
+
+        return anagrafica;
+    }
+
     public static void main(String[] args) {
         DBquery sql = new DBquery();
-        sql.getInsert("Raffo", 1024);
+        sql.getInsert("Raffo", 102224);
     }
 }

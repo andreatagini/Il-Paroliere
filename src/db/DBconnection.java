@@ -68,7 +68,14 @@ public class DBconnection {
 
         return UtentiList;
     }
-
+    public static Statement createStatement() {
+        try {
+            return DBconnection.createStatement();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
     public boolean queryInsert(String query) {
         Statement stmt = null;
         boolean success = false;
