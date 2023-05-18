@@ -19,6 +19,14 @@ public class DBquery {
         return anagrafica;
     }
 
+    public String getParolaDb(String parola) throws SQLException {
+        DBconnection connessione1 = new DBconnection();
+        String query = "SELECT parola FROM parole WHERE parola = '"+parola+"'";
+        ResultSet ris = connessione1.querySelect(query);
+
+        return ris.getString("parola");
+    }
+
     public static void main(String[] args) {
         DBquery sql = new DBquery();
         sql.getInsert("Raffo", 102224);
