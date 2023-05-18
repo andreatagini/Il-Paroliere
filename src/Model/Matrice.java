@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 import javax.swing.*;
@@ -14,11 +13,16 @@ public class Matrice implements ActionListener {
 
     //attributi
     private char[][] matrice;
-    private ArrayList<String> words = new ArrayList<>();
+    private ArrayList<String> words;
+    private ArrayList<String> paroleRipetute;
+    private ArrayList<String> paroleComuni;
 
     //costruttore
     public Matrice() {
         this.matrice = new char[10][10];
+        words = new ArrayList<>();
+        paroleRipetute = new ArrayList<>();
+        paroleComuni = new ArrayList<>();
     }
 
     //getter and setter
@@ -34,6 +38,18 @@ public class Matrice implements ActionListener {
     public void setMatrice(char[][] matrice) {
         this.matrice = matrice;
     }
+    public ArrayList<String> getParoleRipetute() {
+        return paroleRipetute;
+    }
+    public void setParoleRipetute(ArrayList<String> paroleRipetute) {
+        this.paroleRipetute = paroleRipetute;
+    }
+    public ArrayList<String> getParoleComuni() {
+        return paroleComuni;
+    }
+    public void setParoleComuni(ArrayList<String> paroleComuni) {
+        this.paroleComuni = paroleComuni;
+    }
 
     public void caricaMatrice() {
         Random r = new Random();
@@ -41,6 +57,48 @@ public class Matrice implements ActionListener {
         for (int i = 0; i < matrice.length; i++) {
             for (int j = 0; j < matrice[0].length; j++) {
                 this.matrice[i][j] = alphabet.charAt(r.nextInt(alphabet.length()));
+            }
+        }
+        for (int j = 0; j < 7; j++) {
+            //prendo string casuale dall'array parole comuni
+            Random r1 = new Random();
+            int nCas1 = r1.nextInt(getParoleComuni().size());
+            String comune = getParoleComuni().get(nCas1);
+            //numeri random per la posizione della matrice
+            Random rx = new Random();
+            int nCasX = rx.nextInt(10);//numero compreso tra 0 e 9
+            Random ry = new Random();
+            int nCasY = ry.nextInt(10);
+            //numero random per la direzione in cui verra inserita
+            Random r2 = new Random();
+            int nCas2 = r2.nextInt(8) + 1;//numero compreso tra 1 e 8
+            //inserimento di parole comuni nella matrice
+            matrice[nCasX][nCasY] = comune.charAt(0);
+            for (int i = 1; i < comune.length(); i++) {
+                if (nCas2 == 1) {
+                    matrice[nCasX+i][nCasY] = comune.charAt(i);
+                }
+                if (nCas2 == 2) {
+                    matrice[nCasX+i][nCasY+i] = comune.charAt(i);
+                }
+                if (nCas2 == 3) {
+                    matrice[nCasX][nCasY+i] = comune.charAt(i);
+                }
+                if (nCas2 == 4) {
+                    matrice[nCasX-i][nCasY+i] = comune.charAt(i);
+                }
+                if (nCas2 == 5) {
+                    matrice[nCasX-i][nCasY] = comune.charAt(i);
+                }
+                if (nCas2 == 6) {
+                    matrice[nCasX-i][nCasY-i] = comune.charAt(i);
+                }
+                if (nCas2 == 7) {
+                    matrice[nCasX][nCasY-i] = comune.charAt(i);
+                }
+                if (nCas2 == 8) {
+                    matrice[nCasX+i][nCasY-i] = comune.charAt(i);
+                }
             }
         }
     }
@@ -63,15 +121,16 @@ public class Matrice implements ActionListener {
 
         while (scanner.hasNext()) {
             String word = scanner.next();
+            //inserimento di parole comuni in un arraylist
+            if (word.length() <= 6) {
+                paroleComuni.add(word);
+            }
             words.add(word);
         }
 
-        scanner.close();
+        System.out.println(paroleComuni.get(1));
 
-        // Print the contents of the array to check that it worked
-        /*for (String word : words) {
-            System.out.println(word);
-        }*/
+        scanner.close();
     }
 
     //ricercaParolaInMatriceButton
@@ -80,29 +139,6 @@ public class Matrice implements ActionListener {
         String buttonName = button.getText();
         System.out.println("Hai cliccato il bottone: " + buttonName);
     }
-
-    // Custom listener class to handle input events
-    /*public static class InputListener implements Runnable {
-        private char input;
-
-        public void run() {
-            Scanner scanner = new Scanner(System.in);
-
-            // Continuously read input from the scanner and signal an event when input is received
-            while (true) {
-                if (scanner.hasNext()) {
-                    synchronized (this) {
-                        input = scanner.next().charAt(0);
-                        notify();
-                    }
-                }
-            }
-        }
-
-        public char getInput() {
-            return input;
-        }
-    }*/
     public static boolean areAllTrue(Boolean[] array)
     {
         for(boolean b : array) if(!b) return false;
@@ -122,24 +158,72 @@ public class Matrice implements ActionListener {
         }
         return false;
     }
-    public boolean ricercaParolaInMatriceTastiera() {
+    public static boolean cercaParola(char[][] matrice, String parola) {
+        int m = matrice.length;
+        int n = matrice[0].length;
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (trovaParola(matrice, parola, i, j, 0)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+    private static boolean trovaParola(char[][] matrice, String parola, int riga, int colonna, int indice) {
+        if (indice == parola.length()) {
+            return true;
+        }
+
+        if (riga < 0 || colonna < 0 || riga >= matrice.length || colonna >= matrice[0].length) {
+            return false;
+        }
+
+        if (matrice[riga][colonna] != parola.charAt(indice)) {
+            return false;
+        }
+
+        char temp = matrice[riga][colonna];
+        matrice[riga][colonna] = ' ';
+
+        boolean trovato = trovaParola(matrice, parola, riga + 1, colonna, indice + 1)
+                || trovaParola(matrice, parola, riga - 1, colonna, indice + 1)
+                || trovaParola(matrice, parola, riga, colonna + 1, indice + 1)
+                || trovaParola(matrice, parola, riga, colonna - 1, indice + 1);
+
+        matrice[riga][colonna] = temp;
+
+        return trovato;
+    }
+    public boolean verificaParolaRipetuta(String p) {
+        boolean ripetuto = false;
+        for (int i = 0; i < paroleRipetute.size(); i++) {
+            if(paroleRipetute.get(i).equals(p)) {
+                ripetuto = true;
+            }
+        }
+        return ripetuto;
+    }
+    public boolean ricercaParolaInMatriceTastiera(String parola) {
         int numRows = matrice.length;
         int numCols = matrice[0].length;
 
-        Scanner scanner = new Scanner(System.in);
+        /*Scanner scanner = new Scanner(System.in);
         System.out.print("Inserisci la parola: ");
         String inputString = scanner.nextLine();
-        System.out.println("Hai inserito: " + inputString);
+        System.out.println("Hai inserito: " + inputString);*/
 
-        boolean esiste = ricercaParolaInDizionario(inputString);
+        boolean esiste = ricercaParolaInDizionario(parola);
         if (esiste == false) {
             return false;
         }
 
-        int wordLength = inputString.length();
+        int wordLength = parola.length();
 
         // Convert the word to a char array for easy character comparison
-        char[] wordChars = inputString.toCharArray();
+        char[] wordChars = parola.toCharArray();
 
         // Iterate through the matrix rows
         for (int row = 0; row < numRows; row++) {
@@ -176,7 +260,12 @@ public class Matrice implements ActionListener {
 
                         // If all characters of the word match in the current direction, return true
                         if (match && charIndex == wordLength) {
-                            return true;
+                            if (verificaParolaRipetuta(parola) == false) {
+                                paroleRipetute.add(parola);
+                                return true;
+                            } else {
+                                return false;
+                            }
                         }
                     }
                 }
@@ -184,84 +273,5 @@ public class Matrice implements ActionListener {
         }
 
         return false; // Word not found in the matrix
-        /*
-        Boolean[] lettereTrov;
-        char[][] lettereVicine = new char[3][3];
-        int cont = 0;
-        ////////////////////////////////////////////////////////
-
-        do {
-            Scanner scanner = new Scanner(System.in);
-            System.out.print("Inserisci la parola: ");
-            String inputString = scanner.nextLine();
-            System.out.println("Hai inserito: " + inputString);
-
-            lettereTrov = new Boolean[inputString.length()];
-            Arrays.fill(lettereTrov, Boolean.FALSE);
-
-            for (int i = 0; i < inputString.length(); i++) {
-                if (i > 0) {
-                    for (int l = 0; l < 3; l++) {
-                        for (int m = 0; m < 3; m++) {
-                            if (lettereVicine[l][m] != '\u0000') {
-                                if (lettereVicine[l][m] == inputString.charAt(i)) {
-                                    lettereTrov[i] = true;
-                                }
-                            }
-                        }
-                    }
-                    if (lettereTrov[i] == false) {
-                        break;
-                    }
-                    for (int l = 0; l < 3; l++) {
-                        for (int m = 0; m < 3; m++) {
-                            lettereVicine[l][m] = '\u0000'; // Assigning null character to each element
-                        }
-                    }
-                    for (int l = 0; l < 3; l++) {
-                        for (int m = 0; m < 3; m++) {
-                            if (lettereVicine[l][m] == '\u0000') {
-                                // sos
-                            }
-                        }
-                    }
-                }
-                for (int j = 0; j < matrice.length; j++) {
-                    for (int k = 0; k < matrice.length; k++) {
-                        if (inputString.charAt(i) == matrice[j][k]) {
-                            int y = j - 1;
-                            int x = k - 1;
-                            for (int l = 0; l < 3; l++) {
-                                x = k - 1;
-                                for (int m = 0; m < 3; m++) {
-                                    if (isValidIndex(matrice, y, x)) {
-                                        if (l == 1 && m == 1) {
-                                            //niente
-                                        } else {
-                                            lettereVicine[l][m] = matrice[y][x];
-                                        }
-                                    }
-                                    x++;
-                                }
-                                y++;
-                            }
-                            lettereTrov[i] = true;
-                            //System.out.println("Parola Trovata");
-                            break;
-                        }
-                    }
-                    if (lettereTrov[i] == true) {
-                        break;
-                    }
-                }
-                if (!isIndexOutOfRange((i+1), inputString.length())) {
-                }
-            }
-            if (!areAllTrue(lettereTrov)) {
-                System.out.println("Parola non Trovata");
-            }
-            scanner.close();
-        } while (!areAllTrue(lettereTrov));
-        */
     }
 }

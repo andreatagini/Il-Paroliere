@@ -12,16 +12,16 @@ public class Main {
         menu.setSize(400,200);
         menu.setVisible(true);
 
-        /*Matrice griglia = new Matrice();
+        Matrice griglia = new Matrice();
+        griglia.caricaFileToArray();
         griglia.caricaMatrice();
         griglia.visualMatrice();
-        griglia.caricaFileToArray();
-        boolean find = griglia.ricercaParolaInMatriceTastiera();
+        boolean find = griglia.ricercaParolaInMatriceTastiera("ciao");
         if (find == true) {
             System.out.println("Parola trovata");
         } else {
             System.out.println("Parola non trovata");
-        }*/
+        }
         menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }
