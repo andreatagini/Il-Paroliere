@@ -19,16 +19,33 @@ public class DBquery {
         return anagrafica;
     }
 
-    public String getParolaDb(String parola) throws SQLException {
+    public boolean getParolaDb(String parola) throws SQLException {
+        boolean check=false;
+        String parolaTrovata = "";
+
         DBconnection connessione1 = new DBconnection();
         String query = "SELECT parola FROM parole WHERE parola = '"+parola+"'";
         ResultSet ris = connessione1.querySelect(query);
+        if(ris.next()){
+            parolaTrovata = ris.getString("parola");
+            if(parolaTrovata!=null){
+                check = true;
+            }
+        }
 
-        return ris.getString("parola");
+        return check;
+    }
+    public DBquery(){
+
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         DBquery sql = new DBquery();
-        sql.getInsert("Raffo", 102224);
+
+        //sql.getInsert("Raffo", 102224);
+        System.out.println(sql.getParolaDb("io"));
+
+
+
     }
 }
