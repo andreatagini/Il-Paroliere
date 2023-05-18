@@ -219,6 +219,7 @@ public class Matrice implements ActionListener {
                 return true;
             }
         }
+        System.out.println(parola);
         return false;
     }
     public static boolean cercaParola(char[][] matrice, String parola) {
@@ -273,17 +274,17 @@ public class Matrice implements ActionListener {
         int numRows = matrice.length;
         int numCols = matrice[0].length;
 
-        System.out.print(parola);
-
         /*Scanner scanner = new Scanner(System.in);
         System.out.print("Inserisci la parola: ");
         String inputString = scanner.nextLine();
         System.out.println("Hai inserito: " + inputString);*/
 
-        boolean esiste = ricercaParolaInDizionario(parola);
+        /*boolean esiste = ricercaParolaInDizionario(parola);
         if (esiste == false) {
             return false;
         }
+
+        System.out.println(parola);*/
 
         int wordLength = parola.length();
 
