@@ -257,6 +257,7 @@ public class GuiGame extends JFrame{
                 boolean parolaTrovata = metodiMatrice.ricercaParolaInMatriceTastiera(parola);
                 System.out.println("parola inserita: "+parola);
                 System.out.println("esito: "+parolaTrovata);
+                System.out.println("");
             }
         });
 
