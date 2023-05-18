@@ -59,6 +59,47 @@ public class Matrice implements ActionListener {
                 this.matrice[i][j] = alphabet.charAt(r.nextInt(alphabet.length()));
             }
         }
+        for (int j = 0; j < 7; j++) {
+            //prendo string casuale dall'array parole comuni
+            Random r1 = new Random();
+            int nCas1 = r1.nextInt(getParoleComuni().size());
+            String comune = getParoleComuni().get(nCas1);
+            //numeri random per la posizione della matrice
+            Random rx = new Random();
+            int nCasX = rx.nextInt(10);//numero compreso tra 0 e 9
+            Random ry = new Random();
+            int nCasY = ry.nextInt(10);
+            //numero random per la direzione in cui verra inserita
+            int nCas2 = isDentroRange(nCasX, nCasY, comune);
+            //inserimento di parole comuni nella matrice
+            matrice[nCasY][nCasX] = comune.charAt(0);
+            /*for (int i = 1; i < comune.length(); i++) {
+                if (nCas2 == 1) {
+                    matrice[nCasY][nCasX+i] = comune.charAt(i);
+                }
+                if (nCas2 == 2) {
+                    matrice[nCasY+i][nCasX+i] = comune.charAt(i);
+                }
+                if (nCas2 == 3) {
+                    matrice[nCasY+i][nCasX] = comune.charAt(i);
+                }
+                if (nCas2 == 4) {
+                    matrice[nCasY+i][nCasX-i] = comune.charAt(i);
+                }
+                if (nCas2 == 5) {
+                    matrice[nCasY][nCasX-i] = comune.charAt(i);
+                }
+                if (nCas2 == 6) {
+                    matrice[nCasY-i][nCasX-i] = comune.charAt(i);
+                }
+                if (nCas2 == 7) {
+                    matrice[nCasY-i][nCasX] = comune.charAt(i);
+                }
+                if (nCas2 == 8) {
+                    matrice[nCasY-i][nCasX+i] = comune.charAt(i);
+                }
+            }*/
+        }
     }
     public int isDentroRange(int nCasX, int nCasY, String comune) {
         boolean inRange = false;
