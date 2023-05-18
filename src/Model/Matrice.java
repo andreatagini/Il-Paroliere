@@ -59,11 +59,16 @@ public class Matrice implements ActionListener {
                 this.matrice[i][j] = alphabet.charAt(r.nextInt(alphabet.length()));
             }
         }
+        matrice[0][0] = 'c';
+        matrice[0][0] = 'i';
+        matrice[0][0] = 'a';
+        matrice[0][0] = 'o';
         /*for (int j = 0; j < 7; j++) {
             //prendo string casuale dall'array parole comuni
             Random r1 = new Random();
             int nCas1 = r1.nextInt(getParoleComuni().size());
             String comune = getParoleComuni().get(nCas1);
+            System.out.println(comune);
             //numeri random per la posizione della matrice
             Random rx = new Random();
             int nCasX = rx.nextInt(10);//numero compreso tra 0 e 9
@@ -109,6 +114,8 @@ public class Matrice implements ActionListener {
             Random r2 = new Random();
             nCas2 = r2.nextInt(8) + 1;//numero compreso tra 1 e 8
             System.out.print(nCas2);
+            System.out.println("x: "+nCasX);
+            System.out.println("y: "+nCasY);
             if (nCas2 == 1) {
                 if (nCasX + comune.length() < matrice[0].length) {
                     inRange = true;
