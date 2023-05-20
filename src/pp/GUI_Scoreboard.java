@@ -1,4 +1,6 @@
-package db;
+package pp;
+
+import db.DBconnection;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -9,7 +11,7 @@ import java.sql.ResultSet;
 public class GUI_Scoreboard extends JFrame {
     private JPanel panel1;
 
-    public GUI_Scoreboard() {
+    public GUI_Scoreboard(GuiMenu2 guimenu) {
         setTitle("CLASSIFICA GIOCATORE");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(new Dimension(400, 300));
@@ -45,9 +47,9 @@ public class GUI_Scoreboard extends JFrame {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
+        /*SwingUtilities.invokeLater(() -> {
             GUI_Scoreboard frame = new GUI_Scoreboard();
             frame.setVisible(true);
-        });
+        });*/
     }
 }

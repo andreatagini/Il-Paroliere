@@ -4,12 +4,15 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.time.Duration;
 import java.util.Random;
 import model.Matrice;
 
 public class GuiGame extends JFrame{
 
     private Matrice metodiMatrice;
+
+    //scroll panel con le parole trovate
     private JScrollPane scrollParole;
     private JPanel panelMain;
     private JPanel panelGrid;
@@ -116,14 +119,23 @@ public class GuiGame extends JFrame{
     private JButton button100;
     private JButton btnSend;
     private JButton btnStop;
+    private JTextArea textAeraParole;
+    private JLabel labelFind;
+    private JLabel labelPoint;
+    private JTextField textFieldPoints;
+    private JLabel labelTimer;
+    private JTextField textTimer;
 
     private JButton[] bottoni = new JButton[100];
 
     private String parola;
     private int lastClick;
-    private int clicked;
 
-    public GuiGame(GuiMenu2 guimenu) {
+    private int punteggio;
+
+    private int secondi;
+
+    public GuiGame(GuiMenu2 guimenu, String nomeGiocatore) {
         bottoni[0] = button1;
         bottoni[1] = button2;
         bottoni[2] = button3;
@@ -229,6 +241,9 @@ public class GuiGame extends JFrame{
         parola = "";
         lastClick = -1;
 
+        punteggio = 0;
+        secondi = 180;
+
         metodiMatrice.caricaMatrice();
         char[][] matrice = metodiMatrice.getMatrice();
         metodiMatrice.visualMatrice();
@@ -251,14 +266,46 @@ public class GuiGame extends JFrame{
             }
         }
 
-        //btn stop, torna al menu
+        //btn stop, fine partita
         btnStop.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                guimenu.setVisible(true);
+                GuiStop guistop = new GuiStop(guimenu, nomeGiocatore, punteggio);
+                guistop.setContentPane(guistop.getPanel());
+                guistop.setTitle("Il Paroliere - Menu");
+                guistop.setSize(400,200);
+                guistop.setVisible(true);
+                guistop.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
                 dispose();
             }
         });
+
+        //fine timer - fine partita
+        ActionListener actionTimer = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                secondi--;
+                String tempo = secToTemp(secondi);
+                textTimer.setText(tempo);
+
+                //se è scaduto il tempo finisce la partita
+                //chiudo la finestra di gioco
+                if (secondi == 0) {
+                    GuiStop guistop = new GuiStop(guimenu, nomeGiocatore, punteggio);
+                    guistop.setContentPane(guistop.getPanel());
+                    guistop.setTitle("Il Paroliere - Menu");
+                    guistop.setSize(400,200);
+                    guistop.setVisible(true);
+                    guistop.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+                    dispose();
+                }
+            }
+        };
+
+        Timer timer = new Timer(1000, actionTimer);
+        timer.start();
 
         //controlla se la parola inserita esiste
         btnSend.addActionListener(new ActionListener() {
@@ -273,6 +320,16 @@ public class GuiGame extends JFrame{
                 System.out.println("parola inserita: "+parola);
                 System.out.println("esito: "+parolaTrovata);
                 System.out.println("");
+
+                if (parolaTrovata) {
+                    textAeraParole.append(parola+"\n");
+                    punteggio += calcolaPunteggio(parola);
+                    textFieldPoints.setText(Integer.toString(punteggio));
+                }
+
+                parola = "";
+                textBox.setText("");
+                abilitaButton();
             }
         });
 
@@ -452,6 +509,34 @@ public class GuiGame extends JFrame{
         for(int i=0; i<bottoni.length; i++) {
             bottoni[i].setEnabled(true);
         }
+    }
+
+    //calcola il punteggio in base alla lunghezza della parola
+    //5 punti per 2 char
+    //10 per > 2
+    //15 per >= 5
+    private int calcolaPunteggio (String parola) {
+        int p = 0;
+        if(parola.length() == 2) {
+            p = 5;
+        } else if(parola.length() > 2 && parola.length() < 5) {
+            p = 10;
+        } else if (parola.length() >= 5) {
+            p = 15;
+        }
+
+        return p;
+    }
+
+    //stringa per la visualizzazione del tempo
+    private String secToTemp(int sec) {
+        Duration duration = Duration.ofSeconds(sec);
+
+        long minutes = duration.toMinutes();
+        long second = duration.minusMinutes(minutes).getSeconds();
+
+        String timer = String.format("%02d:%02d", minutes, second);
+        return timer;
     }
 
     public String getParola() {
