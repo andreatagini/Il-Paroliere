@@ -123,7 +123,7 @@ public class GuiGame extends JFrame{
     private int lastClick;
     private int clicked;
 
-    public GuiGame() {
+    public GuiGame(GuiMenu2 guimenu) {
         bottoni[0] = button1;
         bottoni[1] = button2;
         bottoni[2] = button3;
@@ -250,6 +250,15 @@ public class GuiGame extends JFrame{
                 indice++;
             }
         }
+
+        //btn stop, torna al menu
+        btnStop.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                guimenu.setVisible(true);
+                dispose();
+            }
+        });
 
         //controlla se la parola inserita esiste
         btnSend.addActionListener(new ActionListener() {
