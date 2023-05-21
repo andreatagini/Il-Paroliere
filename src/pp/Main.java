@@ -1,7 +1,5 @@
 package pp;
 
-import Model.Matrice;
-
 import javax.swing.*;
 
 public class Main {
