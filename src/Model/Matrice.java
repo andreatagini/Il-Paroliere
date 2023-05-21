@@ -72,7 +72,7 @@ public class Matrice implements ActionListener {
             throw new RuntimeException(ex + " Errore in caricaParoleComuni");
         }
 
-        for (int j = 0; j < 10; j++) {
+        for (int j = 0; j < 8; j++) {
             //prendo string casuale dall'array parole comuni
             Random r1 = new Random();
             int nCas1 = r1.nextInt(getParoleComuni().size());

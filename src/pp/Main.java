@@ -13,7 +13,7 @@ public class Main {
         menu.setSize(400,200);
         menu.setVisible(true);
 
-        Matrice griglia = new Matrice();
+        /*Matrice griglia = new Matrice();
         griglia.caricaMatrice();
         griglia.visualMatrice();
         boolean find = griglia.ricercaParolaInMatriceTastiera("ciao");
@@ -21,7 +21,7 @@ public class Main {
             System.out.println("Parola trovata");
         } else {
             System.out.println("Parola non trovata");
-        }
+        }*/
 
         menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
