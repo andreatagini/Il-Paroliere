@@ -39,6 +39,20 @@ public class DBquery {
 
     }
 
+    public ArrayList getFullDiz() throws SQLException {
+        ArrayList<String> dizionario = new ArrayList<>();
+
+        DBconnection connessione1 = new DBconnection();
+        String query = "SELECT * FROM parole;";
+        ResultSet fullDiz = connessione1.querySelect(query);
+
+        while (fullDiz.next()){
+            dizionario.add(fullDiz.getString("parola"));
+        }
+
+        return dizionario;
+    }
+
     public static void main(String[] args) throws SQLException {
         DBquery sql = new DBquery();
 

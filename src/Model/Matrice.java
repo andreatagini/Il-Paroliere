@@ -1,12 +1,9 @@
-package model;
+package Model;
 
-import db.DBconnection;
 import db.DBquery;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Random;
@@ -15,29 +12,21 @@ import javax.swing.*;
 
 public class Matrice implements ActionListener {
 
-    //attributi
+    //ATTRIBUTI
     private char[][] matrice;
-    private ArrayList<String> words;
     private ArrayList<String> paroleRipetute;
     private ArrayList<String> paroleComuni;
     DBquery connect = null;
 
-    //costruttore
+    //COSTRUTTORE
     public Matrice() {
         this.matrice = new char[10][10];
-        words = new ArrayList<>();
         paroleRipetute = new ArrayList<>();
         paroleComuni = new ArrayList<>();
         connect = new DBquery();
     }
 
-    //getter and setter
-    public ArrayList<String> getWords() {
-        return words;
-    }
-    public void setWords(ArrayList<String> words) {
-        this.words = words;
-    }
+    //GETTER AND SETTER
     public char[][] getMatrice() {
         return matrice;
     }
@@ -57,6 +46,15 @@ public class Matrice implements ActionListener {
         this.paroleComuni = paroleComuni;
     }
 
+    //METODI
+    public void caricaParoleComuni() throws SQLException {
+        ArrayList<String> diz = connect.getFullDiz();
+        for (int i = 0; i < diz.size(); i++) {
+            if (diz.get(i).length() < 7) {
+                paroleComuni.add(diz.get(i));
+            }
+        }
+    }
     public void caricaMatrice() {
         Random r = new Random();
         String alphabet = "abcdefghijklmnopqrstuvwxyz";
@@ -65,11 +63,16 @@ public class Matrice implements ActionListener {
                 this.matrice[i][j] = alphabet.charAt(r.nextInt(alphabet.length()));
             }
         }
-        matrice[0][0] = 'c';
-        matrice[0][1] = 'i';
-        matrice[0][2] = 'a';
-        matrice[0][3] = 'o';
-        /*for (int j = 0; j < 7; j++) {
+        inserisciParoleComuniInMatrice();
+    }
+    public void inserisciParoleComuniInMatrice() {
+        try {
+            caricaParoleComuni();
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex + " Errore in caricaParoleComuni");
+        }
+
+        for (int j = 0; j < 10; j++) {
             //prendo string casuale dall'array parole comuni
             Random r1 = new Random();
             int nCas1 = r1.nextInt(getParoleComuni().size());
@@ -110,7 +113,7 @@ public class Matrice implements ActionListener {
                     matrice[nCasY-i][nCasX+i] = comune.charAt(i);
                 }
             }
-        }*/
+        }
     }
     public int isDentroRange(int nCasX, int nCasY, String comune) {
         boolean inRange = false;
@@ -119,9 +122,6 @@ public class Matrice implements ActionListener {
             //numero random per la direzione in cui verra inserita
             Random r2 = new Random();
             nCas2 = r2.nextInt(8) + 1;//numero compreso tra 1 e 8
-            System.out.print(nCas2);
-            System.out.println("x: "+nCasX);
-            System.out.println("y: "+nCasY);
             if (nCas2 == 1) {
                 if (nCasX + comune.length() < matrice[0].length) {
                     inRange = true;
@@ -140,32 +140,32 @@ public class Matrice implements ActionListener {
                 }
             }
             if (nCas2 == 4) {
-                if (nCasX + comune.length() < matrice[0].length) {
+                if (0 < nCasX - comune.length() && nCasX - comune.length() < matrice[0].length) {
                     if (nCasY + comune.length() < matrice.length) {
                         inRange = true;
                     }
                 }
             }
             if (nCas2 == 5) {
-                if (nCasX + comune.length() < matrice[0].length) {
+                if (0 < nCasX - comune.length() && nCasX - comune.length() < matrice[0].length) {
                     inRange = true;
                 }
             }
             if (nCas2 == 6) {
-                if (nCasX + comune.length() < matrice[0].length) {
-                    if (nCasY + comune.length() < matrice.length) {
+                if (0 < nCasX - comune.length() && nCasX - comune.length() < matrice[0].length) {
+                    if (0 < nCasY - comune.length() && nCasY - comune.length() < matrice.length) {
                         inRange = true;
                     }
                 }
             }
             if (nCas2 == 7) {
-                if (nCasY + comune.length() < matrice.length) {
+                if (0 < nCasY - comune.length() && nCasY - comune.length() < matrice.length) {
                     inRange = true;
                 }
             }
             if (nCas2 == 8) {
                 if (nCasX + comune.length() < matrice[0].length) {
-                    if (nCasY + comune.length() < matrice.length) {
+                    if (0 < nCasY - comune.length() && nCasY - comune.length() < matrice.length) {
                         inRange = true;
                     }
                 }
@@ -181,85 +181,17 @@ public class Matrice implements ActionListener {
             System.out.println();
         }
     }
-    public void caricaFileToArray() {
-        File fileDizi = new File("src/model/Dizionario.txt"); // Replace "file.txt" with the path to your text file
-        Scanner scanner = null;
-        try {
-            scanner = new Scanner(fileDizi);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        while (scanner.hasNext()) {
-            String word = scanner.next();
-            //inserimento di parole comuni in un arraylist
-            if (word.length() <= 6) {
-                paroleComuni.add(word);
-            }
-            words.add(word);
-        }
-
-        scanner.close();
-    }
-
     //ricercaParolaInMatriceButton
     public void actionPerformed(ActionEvent e) {
         JButton button = (JButton) e.getSource();
         String buttonName = button.getText();
         System.out.println("Hai cliccato il bottone: " + buttonName);
     }
-    public static boolean areAllTrue(Boolean[] array)
-    {
-        for(boolean b : array) if(!b) return false;
-        return true;
-    }
-    public static boolean isValidIndex(char[][] arr, int col, int row) {
-        return col >= 0 && col < arr.length && row >= 0 && row < arr[0].length;
-    }
     public static boolean isIndexOutOfRange(int index, int arrayLength) {
         return index < 0 || index >= arrayLength;
     }
     public boolean ricercaParolaInDizionario(String parola) throws SQLException {
         boolean trovato = connect.getParolaDb(parola);
-        return trovato;
-    }
-    public static boolean cercaParola(char[][] matrice, String parola) {
-        int m = matrice.length;
-        int n = matrice[0].length;
-
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                if (trovaParola(matrice, parola, i, j, 0)) {
-                    return true;
-                }
-            }
-        }
-
-        return false;
-    }
-    private static boolean trovaParola(char[][] matrice, String parola, int riga, int colonna, int indice) {
-        if (indice == parola.length()) {
-            return true;
-        }
-
-        if (riga < 0 || colonna < 0 || riga >= matrice.length || colonna >= matrice[0].length) {
-            return false;
-        }
-
-        if (matrice[riga][colonna] != parola.charAt(indice)) {
-            return false;
-        }
-
-        char temp = matrice[riga][colonna];
-        matrice[riga][colonna] = ' ';
-
-        boolean trovato = trovaParola(matrice, parola, riga + 1, colonna, indice + 1)
-                || trovaParola(matrice, parola, riga - 1, colonna, indice + 1)
-                || trovaParola(matrice, parola, riga, colonna + 1, indice + 1)
-                || trovaParola(matrice, parola, riga, colonna - 1, indice + 1);
-
-        matrice[riga][colonna] = temp;
-
         return trovato;
     }
     public boolean verificaParolaRipetuta(String p) {
@@ -272,8 +204,8 @@ public class Matrice implements ActionListener {
         return ripetuto;
     }
     public boolean ricercaParolaInMatriceTastiera(String parola) throws SQLException {
-        int numRows = matrice.length;
-        int numCols = matrice[0].length;
+        int rows = matrice.length;
+        int cols = matrice[0].length;
 
         /*Scanner scanner = new Scanner(System.in);
         System.out.print("Inserisci la parola: ");
@@ -285,60 +217,47 @@ public class Matrice implements ActionListener {
             return false;
         }
 
-        System.out.println(parola);
-
-        int wordLength = parola.length();
-
-        // Convert the word to a char array for easy character comparison
-        char[] wordChars = parola.toCharArray();
-
-        // Iterate through the matrix rows
-        for (int row = 0; row < numRows; row++) {
-            // Iterate through the matrix columns
-            for (int col = 0; col < numCols; col++) {
-                // Check for matches in all eight directions
-                for (int dirRow = -1; dirRow <= 1; dirRow++) {
-                    for (int dirCol = -1; dirCol <= 1; dirCol++) {
-                        // Skip the current cell (0,0) as it corresponds to the current word character
-                        if (dirRow == 0 && dirCol == 0) {
-                            continue;
-                        }
-
-                        // Start matching the word characters from the current cell (row, col)
-                        int currentRow = row;
-                        int currentCol = col;
-                        int charIndex = 0;
-                        boolean match = true;
-
-                        // Continue matching while within the matrix boundaries
-                        while (currentRow >= 0 && currentRow < numRows && currentCol >= 0 && currentCol < numCols &&
-                                charIndex < wordLength && match) {
-                            // Check if the current word character matches the current matrix cell
-                            if (matrice[currentRow][currentCol] != wordChars[charIndex]) {
-                                match = false;
-                                break;
-                            }
-
-                            // Move to the next cell in the current direction
-                            currentRow += dirRow;
-                            currentCol += dirCol;
-                            charIndex++;
-                        }
-
-                        // If all characters of the word match in the current direction, return true
-                        if (match && charIndex == wordLength) {
-                            if (verificaParolaRipetuta(parola) == false) {
-                                paroleRipetute.add(parola);
-                                return true;
-                            } else {
-                                return false;
-                            }
-                        }
+        // Scorrere ogni cella della matrice
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (ricercaParola(matrice, parola, i, j, 0)) {
+                    if (verificaParolaRipetuta(parola) == false) {
+                        paroleRipetute.add(parola);
+                        return true;
+                    } else {
+                        return false;
                     }
                 }
             }
         }
 
-        return false; // Word not found in the matrix
+        return false;
+    }
+    private boolean ricercaParola(char[][] matrix, String word, int i, int j, int k) {
+        int rows = matrix.length;
+        int cols = matrix[0].length;
+
+        // Verifica se la posizione corrente è valida e corrisponde alla lettera della parola
+        if (i < 0 || i >= rows || j < 0 || j >= cols || matrix[i][j] != word.charAt(k)) {
+            return false;
+        }
+
+        // Se l'intera parola è stata trovata, restituisci true
+        if (k == word.length() - 1) {
+            return true;
+        }
+
+        // Controlla ricorsivamente le celle adiacenti nella matrice
+        char temp = matrix[i][j];
+        matrix[i][j] = '#';  // Segna la cella come visitata
+
+        boolean found = ricercaParola(matrix, word, i - 1, j, k + 1) ||
+                ricercaParola(matrix, word, i + 1, j, k + 1) ||
+                ricercaParola(matrix, word, i, j - 1, k + 1) ||
+                ricercaParola(matrix, word, i, j + 1, k + 1);
+
+        matrix[i][j] = temp;  // Ripristina il carattere originale
+
+        return found;
     }
 }

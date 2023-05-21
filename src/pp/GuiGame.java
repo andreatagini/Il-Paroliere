@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.time.Duration;
 import java.util.Random;
-import model.Matrice;
+import Model.Matrice;
 
 public class GuiGame extends JFrame{
 

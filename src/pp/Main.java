@@ -1,6 +1,6 @@
 package pp;
 
-import model.Matrice;
+import Model.Matrice;
 
 import javax.swing.*;
 import java.sql.SQLException;
@@ -14,7 +14,6 @@ public class Main {
         menu.setVisible(true);
 
         Matrice griglia = new Matrice();
-        griglia.caricaFileToArray();
         griglia.caricaMatrice();
         griglia.visualMatrice();
         boolean find = griglia.ricercaParolaInMatriceTastiera("ciao");
