@@ -50,7 +50,7 @@ public class Matrice {
     public void caricaParoleComuni() throws SQLException {
         ArrayList<String> diz = connect.getFullDiz();
         for (int i = 0; i < diz.size(); i++) {
-            if (diz.get(i).length() < 7) {
+            if (diz.get(i).length() <= 7) {
                 paroleComuni.add(diz.get(i));
             }
         }
@@ -63,7 +63,7 @@ public class Matrice {
                 this.matrice[i][j] = alphabet.charAt(r.nextInt(alphabet.length()));
             }
         }
-        //inserisciParoleComuniInMatrice();
+        inserisciParoleComuniInMatrice();
     }
     public void inserisciParoleComuniInMatrice() {
         try {

@@ -43,7 +43,7 @@ public class DBquery {
         ArrayList<String> dizionario = new ArrayList<>();
 
         DBconnection connessione1 = new DBconnection();
-        String query = "SELECT * FROM parole;";
+        String query = "SELECT * FROM parole WHERE parola LIKE '______' OR parola LIKE '_____' OR parola LIKE '____' OR parola LIKE '___' OR parola LIKE '__' OR parola LIKE '_';";
         System.out.println(0);
         ResultSet fullDiz = connessione1.querySelect(query);
         System.out.println(1);
