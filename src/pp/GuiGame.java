@@ -1,6 +1,8 @@
 package pp;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -236,6 +238,19 @@ public class GuiGame extends JFrame{
         bottoni[97] = button98;
         bottoni[98] = button99;
         bottoni[99] = button100;
+
+        // Crea un bordo personalizzato
+        Border border = BorderFactory.createLineBorder(Color.WHITE, 2);
+        // Imposta il bordo personalizzato come aspetto predefinito per tutti i bottoni
+        for (int i = 0; i < bottoni.length; i++) {
+            bottoni[i].setBorder(border);
+            bottoni[i].setBackground(Color.GRAY);
+            bottoni[i].setForeground(Color.WHITE);
+        }
+        btnStop.setBorder(border);
+        btnStop.setBackground(Color.BLUE);
+        btnSend.setBorder(border);
+        btnSend.setBackground(Color.BLUE);
 
         metodiMatrice = new Matrice();
         parola = "";
@@ -495,6 +510,14 @@ public class GuiGame extends JFrame{
                 }
             });
         }
+
+        // Configurazione del JFrame
+        setTitle("Il Paroliere - Gioca!");
+        setContentPane(panelMain);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        guimenu.setVisible(false);
     }
 
     private String getSTR() {

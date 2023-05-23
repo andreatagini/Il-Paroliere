@@ -44,7 +44,9 @@ public class DBquery {
 
         DBconnection connessione1 = new DBconnection();
         String query = "SELECT * FROM parole;";
+        System.out.println(0);
         ResultSet fullDiz = connessione1.querySelect(query);
+        System.out.println(1);
 
         while (fullDiz.next()){
             dizionario.add(fullDiz.getString("parola"));

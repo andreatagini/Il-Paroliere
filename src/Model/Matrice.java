@@ -10,7 +10,7 @@ import java.util.Random;
 import java.util.Scanner;
 import javax.swing.*;
 
-public class Matrice implements ActionListener {
+public class Matrice {
 
     //ATTRIBUTI
     private char[][] matrice;
@@ -63,7 +63,7 @@ public class Matrice implements ActionListener {
                 this.matrice[i][j] = alphabet.charAt(r.nextInt(alphabet.length()));
             }
         }
-        inserisciParoleComuniInMatrice();
+        //inserisciParoleComuniInMatrice();
     }
     public void inserisciParoleComuniInMatrice() {
         try {
@@ -72,12 +72,13 @@ public class Matrice implements ActionListener {
             throw new RuntimeException(ex + " Errore in caricaParoleComuni");
         }
 
-        for (int j = 0; j < 8; j++) {
+        for (int j = 0; j < 5; j++) {
             //prendo string casuale dall'array parole comuni
             Random r1 = new Random();
             int nCas1 = r1.nextInt(getParoleComuni().size());
             String comune = getParoleComuni().get(nCas1);
             System.out.println(comune);
+            System.out.println(j);
             //numeri random per la posizione della matrice
             Random rx = new Random();
             int nCasX = rx.nextInt(10);//numero compreso tra 0 e 9
@@ -114,6 +115,7 @@ public class Matrice implements ActionListener {
                 }
             }
         }
+        System.out.println(1);
     }
     public int isDentroRange(int nCasX, int nCasY, String comune) {
         boolean inRange = false;
@@ -181,14 +183,12 @@ public class Matrice implements ActionListener {
             System.out.println();
         }
     }
+
     //ricercaParolaInMatriceButton
     public void actionPerformed(ActionEvent e) {
         JButton button = (JButton) e.getSource();
         String buttonName = button.getText();
         System.out.println("Hai cliccato il bottone: " + buttonName);
-    }
-    public static boolean isIndexOutOfRange(int index, int arrayLength) {
-        return index < 0 || index >= arrayLength;
     }
     public boolean ricercaParolaInDizionario(String parola) throws SQLException {
         boolean trovato = connect.getParolaDb(parola);
